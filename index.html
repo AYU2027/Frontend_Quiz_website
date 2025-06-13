@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🧑‍💻Frontend Quiz Website</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      transition: background 0.3s linear, color 0.3s linear;
+      margin: 0;
+    }
+
+    body.dark {
+      background-color: #292c35;
+      color: white;
+    }
+
+    .gradient-black {
+      background: linear-gradient(to bottom, var(--bs-body-bg), var(--bs-secondary-bg));
+      color: var(--bs-body-color);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .custom-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .checkbox {
+      opacity: 0;
+      position: absolute;
+    }
+
+    .label {
+      width: 50px;
+      height: 26px;
+      background-color: #111;
+      display: flex;
+      border-radius: 50px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px;
+      position: relative;
+      transform: scale(1.5);
+      cursor: pointer;
+    }
+
+    .label i {
+      font-size: 12px;
+    }
+
+    .ball {
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      transition: transform 0.2s linear;
+    }
+
+    .checkbox:checked + .label .ball {
+      transform: translateX(24px);
+    }
+
+    .fa-moon {
+      color: pink;
+    }
+
+    .fa-sun {
+      color: yellow;
+    }
+    .fab{
+      font-size: 36px;
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <!-- Custom Toggle Switch -->
+  <div class="custom-toggle">
+    <input type="checkbox" class="checkbox" id="checkbox">
+    <label for="checkbox" class="label">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+      <div class="ball"></div>
+    </label>
+  </div>
+
+  <main class="container-fluid gradient-black">
+    <div class="row w-100">
+      <div class="col-md-4">
+        <h3 class="display-6 fw-bold mb-4">Welcome to The</h3>
+        <p class="lead mb-5 display-3">Frontend Quiz.</p>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card mx-auto p-4" style="width: 24rem; height: 18rem;">
+          <div class="d-flex flex-column gap-4">
+            <a href="#" class="btn btn-outline-primary d-flex justify-content-between align-items-center" style="width: 340px; height: 60px;">
+              HTML <i class="fab fa-html5"></i>
+            </a>
+            <a href="#" class="btn btn-outline-success d-flex justify-content-between align-items-center" style="width: 340px; height: 60px;">
+              CSS <i class="fab fa-css3-alt"></i>
+            </a>
+            <a href="#" class="btn btn-outline-warning d-flex justify-content-between align-items-center" style="width: 340px; height: 60px;">
+              JS <i class="fab fa-js"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const checkbox = document.getElementById('checkbox');
+    const htmlEl = document.documentElement;
+    const body = document.body;
+
+    checkbox.addEventListener('change', () => {
+      const isDark = htmlEl.getAttribute('data-bs-theme') === 'dark';
+      htmlEl.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
+      body.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
